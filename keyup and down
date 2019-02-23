@@ -1,0 +1,25 @@
+import simplegui
+current_key=" "
+
+def keyup(key):
+    global current_key
+    current_key=" "
+
+def keydown(key):
+    global current_key
+    current_key=chr(key)
+    print current_key
+
+def draw(canvas):
+    global current_key
+    canvas.draw_text(current_key,[50,50],12,"Red")
+    
+frame=simplegui.create_frame("n",100,100)
+frame.set_keyup_handler(keyup)
+frame.set_keydown_handler(keydown)
+frame.set_draw_handler(draw)
+
+frame.start()
+
+
+

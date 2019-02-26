@@ -1,0 +1,51 @@
+import simplegui
+
+radius=50
+increment=5
+
+def draw(canvas):
+    canvas.draw_circle([100,100],radius,5,"red")
+    
+    
+def keydown(key):
+    global radius,increment
+      
+    if key==simplegui.KEY_MAP["up"]:
+        if radius<100:
+            radius+=increment
+        else:
+            print"too big"
+                
+    elif key==simplegui.KEY_MAP["down"]:
+        if radius>increment:
+            radius-=increment
+        else:
+            print"too small"
+
+frame=simplegui.create_frame("upanddown",200,200)
+frame.set_keydown_handler(keydown)
+frame.set_draw_handler(draw)
+frame.start()
+
+
+import simplegui
+message="space bar up"
+
+def keydown(key):
+    global message
+    if key==simplegui.KEY_MAP["up"]:
+        message="space bar up"
+def keyup(key):
+    global message
+    if key==simplegui.KEY_MAP["down"]:
+        message="space bar down"
+def draw(canvas):
+    global message
+    canvas.draw_text(message,[100,100],12,"red")
+    
+frame=simplegui.create_frame("space bar",200,200)
+frame.set_draw_handler(draw)
+frame.set_keyup_handler(keyup)
+frame.set_keydown_handler(keydown)
+frame.start()       
+        
